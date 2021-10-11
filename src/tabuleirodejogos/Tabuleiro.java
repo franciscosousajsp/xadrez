@@ -1,17 +1,17 @@
-package tabuleiro;
+package tabuleirodejogos;
 
-public class Posicao {
+public class Tabuleiro {
 
 	private Integer linha;
 	private Integer coluna;
+	private Peca[][] pecas;
 	
-	public Posicao() {
+	public Tabuleiro(Integer linha, Integer coluna) {
 		
-	}
-
-	public Posicao(Integer linha, Integer coluna) {
 		this.linha = linha;
 		this.coluna = coluna;
+		pecas = new Peca[linha][coluna];
+		
 	}
 
 	public Integer getLinha() {
@@ -29,12 +29,6 @@ public class Posicao {
 	public void setColuna(Integer coluna) {
 		this.coluna = coluna;
 	}
-
-	@Override
-	public String toString() {
-		return  linha +", "+  coluna;
-	}
-	
 	
 	
 	
