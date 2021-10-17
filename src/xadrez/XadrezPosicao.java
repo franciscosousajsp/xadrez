@@ -25,11 +25,11 @@ public class XadrezPosicao {
 	}
 
 	protected Posicao convertePosicao() {
-		return new Posicao(linha - 8, coluna - 'a');
+		return new Posicao(8 - linha, coluna - 'a');
 	}
 	
 	protected static XadrezPosicao trocaPosicao(Posicao posicao) {
-		return new XadrezPosicao((char)('a'- posicao.getColuna()), posicao.getLinha() - 8);
+		return new XadrezPosicao((char)('a'- posicao.getColuna()), 8 - posicao.getLinha());
 	}
 
 	@Override
