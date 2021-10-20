@@ -1,12 +1,16 @@
 package principal;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import xadrez.Cor;
 import xadrez.XadrezPeca;
+import xadrez.XadrezPosicao;
 
 public class Impressao {
-	
+
 	// https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
-	
+
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -16,7 +20,7 @@ public class Impressao {
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
-	
+
 	public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
 	public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
 	public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
@@ -25,6 +29,21 @@ public class Impressao {
 	public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+	public static XadrezPosicao separaPosicao(Scanner scan) {
+
+		try {
+
+			String s = scan.nextLine();
+			char linha = s.charAt(0);
+			int coluna = Integer.parseInt(s.substring(1));
+			return new XadrezPosicao(linha, coluna);
+
+		} catch (Exception e) {
+			throw new InputMismatchException("Erro não instancia da peça. Valor valido a1 a h8");
+		}
+
+	}
 
 	public static void imprimaTabuleiro(XadrezPeca[][] pecas) {
 
@@ -35,7 +54,7 @@ public class Impressao {
 			}
 			System.out.println();
 		}
-		
+
 		System.out.print("  a b c d e f g h");
 	}
 
@@ -43,13 +62,12 @@ public class Impressao {
 		if (peca == null) {
 			System.out.print("-");
 		} else {
-			if(peca.getCor() == Cor.BRANCA) {
+			if (peca.getCor() == Cor.BRANCA) {
 				System.out.print(ANSI_WHITE + peca + ANSI_RESET);
-			}else {
+			} else {
 				System.out.print(ANSI_YELLOW + peca + ANSI_RESET);
 			}
-			
-			
+
 		}
 		System.out.print(" ");
 	}
