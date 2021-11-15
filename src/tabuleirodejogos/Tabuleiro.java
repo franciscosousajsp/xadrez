@@ -1,6 +1,6 @@
 package tabuleirodejogos;
 
-import xadrez.ExceptionXadrez;
+
 
 public class Tabuleiro {
 
@@ -11,7 +11,7 @@ public class Tabuleiro {
 	public Tabuleiro(Integer linha, Integer coluna) {
 
 		if (linha < 1 || coluna < 1) {
-			throw new ExceptionTabuleiro("Não pode ser Criado o Tabuleiro");
+			throw new ExceptionTabuleiro("Nao pode ser Criado o Tabuleiro");
 		}
 
 		this.linha = linha;
@@ -30,21 +30,21 @@ public class Tabuleiro {
 
 	public Peca peca(int linha, int coluna) {
 		if (!existePosicao(linha, coluna)) {
-			throw new ExceptionTabuleiro("posição não existe no tabuleiro");
+			throw new ExceptionTabuleiro("posição nao existe no tabuleiro");
 		}
 		return pecas[linha][coluna];
 	}
 
 	public Peca peca(Posicao posicao) {
 		if (!existePosicao(posicao)) {
-			throw new ExceptionTabuleiro("posicão não existe no tabuleiro");
+			throw new ExceptionTabuleiro("posicão nao existe no tabuleiro");
 		}
 		return pecas[posicao.getLinha()][posicao.getColuna()];
 	}
 
 	public void colocaPeca(Peca peca, Posicao posicao) {
 		if (temPeca(posicao)) {
-			throw new ExceptionTabuleiro("peça já existe no tabuleiro na posição " + posicao);
+			throw new ExceptionTabuleiro("peca ja existe no tabuleiro na posiçao " + posicao);
 		}
 		pecas[posicao.getLinha()][posicao.getColuna()] = peca;
 		peca.posicao = posicao;
@@ -53,7 +53,7 @@ public class Tabuleiro {
 	public Peca removePeca(Posicao posicao) {
 
 		if (!existePosicao(posicao)) {
-			throw new ExceptionTabuleiro("posição não existe no tabuleiro");
+			throw new ExceptionTabuleiro("posicao nao existe no tabuleiro");
 		}
 
 		if (peca(posicao) == null) {
@@ -78,7 +78,7 @@ public class Tabuleiro {
 
 	public boolean temPeca(Posicao posicao) {
 		if (!existePosicao(posicao)) {
-			throw new ExceptionTabuleiro("posicão não existe no tabuleiro");
+			throw new ExceptionTabuleiro("posicão nao existe no tabuleiro");
 		}
 		return peca(posicao) != null;
 	}
