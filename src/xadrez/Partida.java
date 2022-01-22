@@ -18,10 +18,10 @@ public class Partida {
 	}
 
 	public XadrezPeca[][] getPeca() {
-		XadrezPeca[][] matriz = new XadrezPeca[tabuleiro.getLinha()][tabuleiro.getColuna()];
+		XadrezPeca[][] matriz = new XadrezPeca[tabuleiro.getLinhas()][tabuleiro.getColunas()];
 
-		for (int i = 0; i < tabuleiro.getLinha(); i++) {
-			for (int j = 0; j < tabuleiro.getColuna(); j++) {
+		for (int i = 0; i < tabuleiro.getLinhas(); i++) {
+			for (int j = 0; j < tabuleiro.getColunas(); j++) {
 				matriz[i][j] = (XadrezPeca) tabuleiro.peca(i, j);
 			}
 		}
@@ -52,19 +52,16 @@ public class Partida {
 
 	private void validaPosicaoOrigem(Posicao posicao) {
 		if (!tabuleiro.existePosicao(posicao)) {
-			throw new ExceptionXadrez("Posição ja existe na origem");
-		}
-
-		if (!tabuleiro.peca(posicao).existePosivelMovimento()) {
-			throw new ExceptionXadrez("nao ha possibilidade de movimento");
+			throw new XadrezException("Posicao ja existe na origem");
 		}
 	}
 
 	private void validaPosicaoDestino(Posicao origem, Posicao destino) {
 		if(!tabuleiro.peca(origem).possivelMovimento(destino)) {
-			throw new ExceptionXadrez("Nao ha possibilidade de Movimento dessa peca pra este destino");
+			throw new XadrezException("Nao ha possibilidade de Movimento dessa peca pra este destino");
 		}
 	}
+
 
 	private void colocaNovaPeca(char coluna, int linha, Peca peca) {
 		tabuleiro.colocaPeca(peca, new XadrezPosicao(coluna, linha).convertePosicao());

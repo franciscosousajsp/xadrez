@@ -3,12 +3,12 @@ package principal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import xadrez.ExceptionXadrez;
 import xadrez.Partida;
+import xadrez.XadrezException;
 import xadrez.XadrezPeca;
 import xadrez.XadrezPosicao;
 
-public class Principal {
+public class Aplicacao {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -30,7 +30,7 @@ public class Principal {
 
 				XadrezPeca capturaPeca = partida.pecaPerformace(origem, destino);
 
-			} catch (ExceptionXadrez e) {
+			} catch (XadrezException e) {
 				System.out.println(e.getMessage());
 				sc.nextLine();
 			} catch (InputMismatchException e) {
@@ -40,5 +40,4 @@ public class Principal {
 
 		}
 	}
-
 }

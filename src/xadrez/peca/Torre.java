@@ -18,7 +18,7 @@ public class Torre extends XadrezPeca {
 
 	@Override
 	public boolean[][] possivelMovimento() {
-		boolean[][] matriz = new boolean[getTabuleiro().getLinha()][getTabuleiro().getColuna()];
+		boolean[][] matriz = new boolean[getTabuleiro().getLinhas()][getTabuleiro().getColunas()];
 
 		Posicao p = new Posicao(0, 0);
 

@@ -17,7 +17,7 @@ public class Rei extends XadrezPeca{
 
 	@Override
 	public boolean[][] possivelMovimento() {
-		boolean[][] matriz = new boolean[getTabuleiro().getLinha()][getTabuleiro().getColuna()];
+		boolean[][] matriz = new boolean[getTabuleiro().getLinhas()][getTabuleiro().getColunas()];
 		return matriz;
 	}
 

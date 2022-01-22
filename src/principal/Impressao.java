@@ -45,8 +45,8 @@ public class Impressao {
 			int coluna = Integer.parseInt(s.substring(1));
 			return new XadrezPosicao(linha, coluna);
 
-		} catch (Exception e) {
-			throw new InputMismatchException("Erro não instancia da peça. Valor valido a1 a h8");
+		} catch (RuntimeException e) {
+			throw new InputMismatchException("Erro nao instancia da peca. Valor valido a1 a h8");
 		}
 
 	}

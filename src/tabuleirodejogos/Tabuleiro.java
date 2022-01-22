@@ -4,40 +4,38 @@ package tabuleirodejogos;
 
 public class Tabuleiro {
 
-	private Integer linha;
-	private Integer coluna;
+	private Integer linhas;
+	private Integer colunas;
 	private Peca[][] pecas;
 
-	public Tabuleiro(Integer linha, Integer coluna) {
-
-		if (linha < 1 || coluna < 1) {
+	public Tabuleiro(Integer linhas, Integer colunas) {
+		if(linhas < 1 && colunas < 1) {
 			throw new ExceptionTabuleiro("Nao pode ser Criado o Tabuleiro");
 		}
-
-		this.linha = linha;
-		this.coluna = coluna;
-		pecas = new Peca[linha][coluna];
-
+		this.linhas = linhas;
+		this.colunas = colunas;
+		
+		pecas = new Peca[linhas][colunas];
+	}
+	
+	public Integer getLinhas() {
+		return linhas;
 	}
 
-	public Integer getLinha() {
-		return linha;
-	}
-
-	public Integer getColuna() {
-		return coluna;
+	public Integer getColunas() {
+		return colunas;
 	}
 
 	public Peca peca(int linha, int coluna) {
 		if (!existePosicao(linha, coluna)) {
-			throw new ExceptionTabuleiro("posição nao existe no tabuleiro");
+			throw new ExceptionTabuleiro("posicao nao existe no tabuleiro");
 		}
 		return pecas[linha][coluna];
 	}
 
 	public Peca peca(Posicao posicao) {
 		if (!existePosicao(posicao)) {
-			throw new ExceptionTabuleiro("posicão nao existe no tabuleiro");
+			throw new ExceptionTabuleiro("posicao nao existe no tabuleiro");
 		}
 		return pecas[posicao.getLinha()][posicao.getColuna()];
 	}
@@ -69,7 +67,7 @@ public class Tabuleiro {
 	}
 
 	private boolean existePosicao(int linha, int coluna) {
-		return linha >= 0 && linha < this.linha && coluna >= 0 && coluna < this.coluna;
+		return linha >= 0 && linha < this.linhas && coluna >= 0 && coluna < this.colunas;
 	}
 
 	public boolean existePosicao(Posicao posicao) {
@@ -78,7 +76,7 @@ public class Tabuleiro {
 
 	public boolean temPeca(Posicao posicao) {
 		if (!existePosicao(posicao)) {
-			throw new ExceptionTabuleiro("posicão nao existe no tabuleiro");
+			throw new ExceptionTabuleiro("posicao nao existe no tabuleiro");
 		}
 		return peca(posicao) != null;
 	}

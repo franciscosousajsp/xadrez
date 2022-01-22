@@ -8,10 +8,7 @@ public class XadrezPosicao {
 	private Integer linha;
 
 	public XadrezPosicao(char coluna, Integer linha) {
-		if (coluna < 'a' || coluna > 'h' || linha < 1 || linha > 8) {
-			throw new ExceptionXadrez("Erro a instanciar a linha e coluna ");
-		}
-
+	
 		this.coluna = coluna;
 		this.linha = linha;
 	}
@@ -29,7 +26,7 @@ public class XadrezPosicao {
 	}
 	
 	protected static XadrezPosicao trocaPosicao(Posicao posicao) {
-		return new XadrezPosicao((char)('a'- posicao.getColuna()), 8 - posicao.getLinha());
+		return new XadrezPosicao((char)('a'+ posicao.getColuna()), 8 - posicao.getLinha());
 	}
 
 	@Override
